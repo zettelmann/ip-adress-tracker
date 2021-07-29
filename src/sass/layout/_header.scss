@@ -1,0 +1,9 @@
+.header {
+  background: url("../images/pattern-bg.png") no-repeat center / cover;
+  height: 30rem;
+
+  &__title {
+    text-align: center;
+    padding-top: 2.4rem;
+  }
+}

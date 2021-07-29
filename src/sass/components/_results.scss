@@ -1,0 +1,42 @@
+.result {
+  max-width: 55.5rem;
+  margin: 0 auto;
+
+  background: #fff;
+  list-style: none;
+  padding: 2.4rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 50px 50px -25px rgba(0, 0, 0, 0.3);
+
+  display: grid;
+  gap: 2.4rem;
+
+  text-align: center;
+
+  position: relative;
+  z-index: 10;
+
+  &__ip,
+  &__location,
+  &__timezone,
+  &__isp {
+  }
+
+  &__ip-title,
+  &__location-title,
+  &__timezone-title,
+  &__isp-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--clr-grey--light);
+  }
+
+  &__ip-data,
+  &__location-data,
+  &__timezone-data,
+  &__isp-data {
+    font-size: 2.4rem;
+    font-weight: 500;
+  }
+}

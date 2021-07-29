@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+
+    <title>IP Adress Tracker</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header__title">IP Adress Tracker</h1>
+      <div class="container container--form">
+        <form action="" method="" class="form">
+          <label class="form__label">
+            <input type="text" class="form__input" />
+          </label>
+          <button type="submit" class="form__btn"></button>
+        </form>
+      </div>
+      <div class="container container--results">
+        <ul class="result">
+          <li class="result__ip">
+            <h2 class="result__ip-title">IP Adress</h2>
+            <p class="result__ip-data">-</p>
+          </li>
+          <li class="result__location">
+            <h2 class="result__location-title">Location</h2>
+            <p class="result__location-data">-</p>
+          </li>
+          <li class="result__timezone">
+            <h2 class="result__timezone-title">Timezone</h2>
+            <p class="result__timezone-data">-</p>
+          </li>
+          <li class="result__isp">
+            <h2 class="result__isp-title">ISP</h2>
+            <p class="result__isp-data">-</p>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <div id="map"></div>
+    </main>
+  </body>
+</html>
