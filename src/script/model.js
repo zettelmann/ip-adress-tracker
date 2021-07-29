@@ -1,13 +1,16 @@
 import { GET_IP_API, GET_GEO_API, API_KEY } from "./config";
+import { checkIP, checkEmail, checkDomain } from "./helpers";
 
 export const state = {
   ip: "",
   coords: "",
+  inputParameter: "",
   results: {},
 };
 
 const createResultsObject = (data) => {
   return {
+    ip: data.ip,
     lat: data.location.lat,
     lng: data.location.lng,
     locationCity: data.location.city,
@@ -38,4 +41,11 @@ export const loadLocationCoords = async (
   const data = await response.json();
   state.results = createResultsObject(data);
   state.coords = [state.results.lat, state.results.lng];
+};
+
+export const validateInput = (input) => {
+  console.log(input);
+  if (checkIP(input)) state.inputParameter = "ipAddress";
+  if (checkEmail(input)) state.inputParameter = "email";
+  if (checkDomain(input)) state.inputParameter = "domain";
 };
