@@ -10,3 +10,4 @@ export const LEAFLET_LAYER =
 
 export const GET_IP_API = "https://api.ipify.org?format=json";
 export const GET_GEO_API = "https://geo.ipify.org/api/v1?api";
+export const ZOOM_LEVEL = 15;
