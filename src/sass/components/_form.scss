@@ -11,18 +11,33 @@
   }
 
   &__input {
+    cursor: pointer;
     height: inherit;
     width: inherit;
     border-radius: var(--border-radius) 0 0 var(--border-radius);
     border: none;
     font-size: inherit;
     padding: 1.2rem;
+
+    &::placeholder {
+      font-family: var(--font-primary);
+      font-size: 1.6rem;
+    }
   }
 
   &__btn {
+    cursor: pointer;
+
     flex: 0 0 5.8rem;
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
     background: #000 url("./../images/icon-arrow.svg") center no-repeat;
     border: none;
+
+    transition: all 0.4s ease-in-out;
+
+    &:hover {
+      background: var(--clr-grey--dark) url("./../images/icon-arrow.svg") center
+        no-repeat;
+    }
   }
 }

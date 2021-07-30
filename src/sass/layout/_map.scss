@@ -1,4 +1,9 @@
+.main {
+  // 100vh - 30rem header
+  height: calc(100vh - 30rem);
+}
+
 #map {
-  height: 100vh;
+  height: 100%;
   z-index: 0;
 }

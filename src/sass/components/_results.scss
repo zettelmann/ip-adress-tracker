@@ -1,5 +1,7 @@
+@use '../base';
+
 .result {
-  max-width: 55.5rem;
+  max-width: 110rem;
   margin: 0 auto;
 
   background: #fff;
@@ -16,27 +18,31 @@
   position: relative;
   z-index: 10;
 
-  &__ip,
-  &__location,
-  &__timezone,
-  &__isp {
+  @include base.tablet-breakpoint {
+    display: flex;
+    gap: 4.8rem;
+    min-width: 55rem;
   }
 
-  &__ip-title,
-  &__location-title,
-  &__timezone-title,
-  &__isp-title {
-    font-size: 1.4rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: var(--clr-grey--light);
-  }
+  &__item {
+    text-align: center;
 
-  &__ip-data,
-  &__location-data,
-  &__timezone-data,
-  &__isp-data {
-    font-size: 2.4rem;
-    font-weight: 500;
+    @include base.tablet-breakpoint {
+      position: relative;
+      flex: 1 1 25%;
+      text-align: left;
+
+      &:not(:last-child)::after {
+        position: absolute;
+        content: "";
+        right: -25px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--clr-grey--light);
+        width: 2px;
+        height: 80%;
+        opacity: 50%;
+      }
+    }
   }
 }

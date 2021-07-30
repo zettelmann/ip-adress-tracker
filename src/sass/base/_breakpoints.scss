@@ -1,0 +1,8 @@
+// Breakpoint: 600px / 1.6 = 37.5em
+$screen-tablet: 37.5em;
+
+@mixin tablet-breakpoint {
+  @media (min-width: #{$screen-tablet}) {
+    @content;
+  }
+}

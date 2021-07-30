@@ -1,6 +1,9 @@
 import { GET_IP_API, GET_GEO_API, API_KEY } from "./config";
 import { checkIP, checkEmail, checkDomain } from "./helpers";
 
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 export const state = {
   ip: "",
   coords: "",
@@ -44,7 +47,6 @@ export const loadLocationCoords = async (
 };
 
 export const validateInput = (input) => {
-  console.log(input);
   if (checkIP(input)) state.inputParameter = "ipAddress";
   if (checkEmail(input)) state.inputParameter = "email";
   if (checkDomain(input)) state.inputParameter = "domain";

@@ -15,6 +15,18 @@ body {
 
 h1 {
   color: #fff;
-  font-size: 2.6rem;
+  font-size: clamp(2.6rem, 2vw, 3.6rem);
+  font-weight: 500;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 1.5vw, 1.4rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--clr-grey--light);
+}
+
+p {
+  font-size: clamp(1.6rem, 2.2vw, 2.4rem);
   font-weight: 500;
 }

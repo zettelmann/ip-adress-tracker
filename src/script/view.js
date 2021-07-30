@@ -1,15 +1,26 @@
 import { LEAFLET_LAYER } from "./config";
 import { ZOOM_LEVEL } from "./config";
+import iconLocation from "../images/icon-location.svg";
+
+import "core-js/stable";
 
 class View {
-  /* INTIALIZING MAP OUTSIDE A FUNCTION, ALLOWS TO REFRESH THE MAP*/
-  #map = L.map("map");
+  // initialize leaflet map
+  #map = L.map("map", {
+    zoomControl: false,
+  });
   #ipOutput = document.querySelector(".result__ip-data");
   #locationOutput = document.querySelector(".result__location-data");
   #timzoneOutput = document.querySelector(".result__timezone-data");
   #ipsOutput = document.querySelector(".result__isp-data");
   #searchForm = document.querySelector(".form");
   #searchInput = document.querySelector(".form__input");
+  #icon = L.icon({
+    iconUrl: iconLocation,
+    iconSize: [46, 56],
+    iconAnchor: [22, -25],
+    popupAnchor: [-3, -76],
+  });
 
   addHandlerSearch(handler) {
     this.#searchForm.addEventListener("submit", (e) => {
@@ -22,7 +33,7 @@ class View {
   renderOutput(results) {
     this.#ipOutput.innerHTML = results.ip;
     this.#locationOutput.innerHTML = `${results.locationCity}, ${results.locationRegion}`;
-    this.#timzoneOutput.innerHTML = results.timezone;
+    this.#timzoneOutput.innerHTML = ` UTC ${results.timezone}`;
     this.#ipsOutput.innerHTML = results.isp;
   }
 
@@ -31,13 +42,12 @@ class View {
 
     L.tileLayer(LEAFLET_LAYER, {
       attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(this.#map);
 
-    L.marker(coords)
-      .addTo(this.#map)
-      .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
-      .openPopup();
+    L.marker(coords, {
+      icon: this.#icon,
+    }).addTo(this.#map);
   }
 }
 export default new View();

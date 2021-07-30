@@ -32,33 +32,37 @@
       <div class="container container--form">
         <form action="" method="" class="form">
           <label class="form__label">
-            <input type="text" class="form__input" />
+            <input
+              type="text"
+              class="form__input"
+              placeholder="Search for any IP address or domain"
+            />
           </label>
           <button type="submit" class="form__btn"></button>
         </form>
       </div>
       <div class="container container--results">
         <ul class="result">
-          <li class="result__ip">
-            <h2 class="result__ip-title">IP Adress</h2>
+          <li class="result__item">
+            <h2 class="result__title">IP Adress</h2>
             <p class="result__ip-data">-</p>
           </li>
-          <li class="result__location">
-            <h2 class="result__location-title">Location</h2>
+          <li class="result__item">
+            <h2 class="result__title">Location</h2>
             <p class="result__location-data">-</p>
           </li>
-          <li class="result__timezone">
-            <h2 class="result__timezone-title">Timezone</h2>
+          <li class="result__item">
+            <h2 class="result__title">Timezone</h2>
             <p class="result__timezone-data">-</p>
           </li>
-          <li class="result__isp">
-            <h2 class="result__isp-title">ISP</h2>
+          <li class="result__item">
+            <h2 class="result__title">ISP</h2>
             <p class="result__isp-data">-</p>
           </li>
         </ul>
       </div>
     </header>
-    <main>
+    <main class="main">
       <div id="map"></div>
     </main>
   </body>
