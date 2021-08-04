@@ -1,14 +1,18 @@
 import "../sass/main.scss";
 import * as model from "./model";
+import resultView from "./resultView";
+import mapView from "./mapView";
 import view from "./view";
 
 const controlClientIP = async () => {
   try {
-    view.renderSpinner();
+    resultView.renderSpinner();
+    //mapView.renderSpinner();
+
     await model.loadClientIP();
     await model.loadLocationCoords(model.state.ip);
-    view.renderOutput(model.state.results);
-    view.renderMap(model.state.coords);
+    resultView.renderOutput(model.state.results);
+    mapView.renderMap(model.state.coords);
   } catch (err) {
     console.error(err);
   }
@@ -16,19 +20,19 @@ const controlClientIP = async () => {
 
 const controlSearch = async (input) => {
   try {
-    view.renderSpinner();
+    resultView.renderSpinner();
     model.validateInput(input);
     await model.loadLocationCoords(input, model.state.inputParameter);
-    view.renderOutput(model.state.results);
-    view.renderMap(model.state.coords);
+    resultView.renderOutput(model.state.results);
+    mapView.renderMap(model.state.coords);
   } catch (err) {
-    view.renderError();
+    resultView.renderError();
     console.error(err);
   }
 };
 
 const init = () => {
   navigator.geolocation.getCurrentPosition(controlClientIP);
-  view.addHandlerSearch(controlSearch);
+  resultView.addHandlerSearch(controlSearch);
 };
 init();

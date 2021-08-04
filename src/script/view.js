@@ -1,33 +1,16 @@
-import { LEAFLET_LAYER } from "./config";
-import { ZOOM_LEVEL } from "./config";
-import iconLocation from "../images/icon-location.svg";
-
 import "core-js/stable";
 import { mark } from "regenerator-runtime";
 
-class View {
-  // initialize leaflet map
-  #map = L.map("map", {
-    zoomControl: false,
-  });
-  /*   
-  #ipOutput = document.querySelector(".result__ip-data");
-  #locationOutput = document.querySelector(".result__location-data");
-  #timzoneOutput = document.querySelector(".result__timezone-data");
-  #ipsOutput = document.querySelector(".result__isp-data");
- */
+export default class View {
   #searchForm = document.querySelector(".form");
   #searchInput = document.querySelector(".form__input");
-  #results = document.querySelector(".result");
-  #icon = L.icon({
-    iconUrl: iconLocation,
-    iconSize: [46, 56],
-    iconAnchor: [22, -25],
-    popupAnchor: [-3, -76],
-  });
+
+  _clear() {
+    this._parentElement.innerHTML = "";
+  }
 
   renderSpinner() {
-    this.#results.innerHTML = "";
+    this._clear();
     const markup = `
     <div class="loading-spinner__container">
       <div class="loading-spinner__item"></div>
@@ -36,20 +19,20 @@ class View {
       <div class="loading-spinner__item"></div>
     </div>
     `;
-    this.#results.insertAdjacentHTML("afterbegin", markup);
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
   renderError() {
-    console.log(this.#results);
     console.log("ERROR");
-    this.#results.innerHTML = "";
-    this.#results.innerHTML = `
+    this._clear();
+    const markup = `
     <li class="result__error">
       <p>
         Please supply an IP address, a domain or an email address!
       </p>
     </li>
     `;
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
   addHandlerSearch(handler) {
@@ -61,7 +44,7 @@ class View {
   }
 
   renderOutput(results) {
-    this.#results.innerHTML = "";
+    this._clear();
     const markup = `
     <li class="result__item">
     <h2 class="result__title">IP Adress</h2>
@@ -80,20 +63,8 @@ class View {
       <p class="result__isp-data">${results.isp}</p>
     </li>
     `;
-    this.#results.insertAdjacentHTML("afterbegin", markup);
-  }
-
-  renderMap(coords) {
-    this.#map.setView(coords, ZOOM_LEVEL);
-
-    L.tileLayer(LEAFLET_LAYER, {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    }).addTo(this.#map);
-
-    L.marker(coords, {
-      icon: this.#icon,
-    }).addTo(this.#map);
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 }
-export default new View();
+
+//export default new View();
