@@ -4,6 +4,7 @@ import view from "./view";
 
 const controlClientIP = async () => {
   try {
+    view.renderSpinner();
     await model.loadClientIP();
     await model.loadLocationCoords(model.state.ip);
     view.renderOutput(model.state.results);
@@ -15,11 +16,13 @@ const controlClientIP = async () => {
 
 const controlSearch = async (input) => {
   try {
+    view.renderSpinner();
     model.validateInput(input);
     await model.loadLocationCoords(input, model.state.inputParameter);
     view.renderOutput(model.state.results);
     view.renderMap(model.state.coords);
   } catch (err) {
+    view.renderError();
     console.error(err);
   }
 };

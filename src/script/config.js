@@ -1,4 +1,4 @@
-export const API_KEY = "at_460m2bJ2FJPg5rV0EqyasH0uyQTTy";
+export const API_KEY = "at_XdFsZSzG8jpvnYEBqBA6wPzsNXsZe";
 // regular expression
 export const REGEX_CHECK_IP =
   /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}↵(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;

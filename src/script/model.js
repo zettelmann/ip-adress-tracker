@@ -8,6 +8,7 @@ export const state = {
   ip: "",
   coords: "",
   inputParameter: "",
+  searchQuery: "",
   results: {},
 };
 
@@ -34,20 +35,42 @@ export const loadClientIP = async () => {
   }
 };
 
-export const loadLocationCoords = async (
-  address,
-  inputParameter = "ipAddress"
-) => {
-  const response = await fetch(
-    `${GET_GEO_API}Key=${API_KEY}&${inputParameter}=${address}`
-  );
-  const data = await response.json();
-  state.results = createResultsObject(data);
-  state.coords = [state.results.lat, state.results.lng];
+export const loadLocationCoords = async (address, inputParameter) => {
+  try {
+    console.log(address);
+    console.log(inputParameter);
+    const response = await fetch(
+      `${GET_GEO_API}Key=${API_KEY}&${inputParameter}=${address}`
+    );
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
+    state.results = createResultsObject(data);
+    state.coords = [state.results.lat, state.results.lng];
+    console.log(state.coords);
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
 };
 
 export const validateInput = (input) => {
-  if (checkIP(input)) state.inputParameter = "ipAddress";
-  if (checkEmail(input)) state.inputParameter = "email";
-  if (checkDomain(input)) state.inputParameter = "domain";
+  if (checkEmail(input)) {
+    state.inputParameter = "email";
+    console.log("1: EMAIL");
+    return;
+  }
+  if (checkIP(input)) {
+    state.inputParameter = "ipAddress";
+    console.log("2: IPADRESS");
+    return;
+  }
+  if (checkDomain(input)) {
+    state.inputParameter = "domain";
+    console.log("3: DOMAIN");
+    return;
+  } else {
+    state.inputParameter = "ipAddress";
+    console.log("4: IPADRESS");
+  }
 };

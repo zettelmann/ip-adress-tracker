@@ -1,0 +1,38 @@
+.loading-spinner {
+  &__container {
+    position: relative;
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+  }
+
+  &__item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 4 auto;
+    border: 6px solid;
+    border-radius: 50%;
+    border-color: var(--clr-grey--dark) transparent transparent transparent;
+    animation: rotation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+
+    &:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+    &:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+    &:nth-child(3) {
+      animation-delay: -0.15s;
+    }
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
