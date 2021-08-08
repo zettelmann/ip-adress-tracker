@@ -1,4 +1,4 @@
-# Solar System web application (OOP with JS)
+# IP Adress Tracker (MVC-Pattern)
 
 This is a solution to the [IP address tracker challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). 
 
