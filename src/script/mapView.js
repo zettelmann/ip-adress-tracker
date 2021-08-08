@@ -6,8 +6,6 @@ import View from "./view";
 
 class MapView extends View {
   // initialize leaflet map
-  /*   _parentElement = document.querySelector("main");
-   */
   #map = L.map("map", {
     zoomControl: false,
   });
@@ -18,14 +16,9 @@ class MapView extends View {
     iconAnchor: [22, -25],
     popupAnchor: [-3, -76],
   });
-  /* 
-  #clearMap() {
-    this._parentElement.innerHTML = "";
-  }
- */
+
   renderMap(coords) {
-    /*     this.#clearMap();
-     */ this.#map.setView(coords, ZOOM_LEVEL);
+    this.#map.setView(coords, ZOOM_LEVEL);
 
     L.tileLayer(LEAFLET_LAYER, {
       attribution:

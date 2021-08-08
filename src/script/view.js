@@ -1,16 +1,13 @@
-import "core-js/stable";
-import { mark } from "regenerator-runtime";
-
 export default class View {
   #searchForm = document.querySelector(".form");
   #searchInput = document.querySelector(".form__input");
 
-  _clear() {
+  #clear() {
     this._parentElement.innerHTML = "";
   }
 
   renderSpinner() {
-    this._clear();
+    this.#clear();
     const markup = `
     <div class="loading-spinner__container">
       <div class="loading-spinner__item"></div>
@@ -24,7 +21,7 @@ export default class View {
 
   renderError() {
     console.log("ERROR");
-    this._clear();
+    this.#clear();
     const markup = `
     <li class="result__error">
       <p>
@@ -44,7 +41,7 @@ export default class View {
   }
 
   renderOutput(results) {
-    this._clear();
+    this.#clear();
     const markup = `
     <li class="result__item">
     <h2 class="result__title">IP Adress</h2>
